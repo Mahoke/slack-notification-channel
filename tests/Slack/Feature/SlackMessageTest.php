@@ -575,7 +575,8 @@ class SlackMessageTest extends TestCase
     }
 
     /** @test */
-    public function it_can_return_an_block_kit_builder_url() {
+    public function it_can_return_an_block_kit_builder_url()
+    {
         $message = (new SlackChannelTestNotification(function (SlackMessage $message) {
             $message
                 ->username('larabot')
