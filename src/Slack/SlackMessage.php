@@ -331,6 +331,11 @@ class SlackMessage implements Arrayable
             dd($this->toArray());
         }
 
-        dd('https://app.slack.com/block-kit-builder#'.rawurlencode(json_encode(Arr::except($this->toArray(), ['username', 'text', 'channel']), true)));
+        dd($this->toBlockKitBuilderUrl());
+    }
+
+    public function toBlockKitBuilderUrl(): string
+    {
+        return 'https://app.slack.com/block-kit-builder#'.rawurlencode(json_encode(Arr::except($this->toArray(), ['username', 'text', 'channel']), true));
     }
 }
