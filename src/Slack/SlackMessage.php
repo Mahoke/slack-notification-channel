@@ -321,6 +321,16 @@ class SlackMessage implements Arrayable
     }
 
     /**
+     * Get the Block Kit URL for the message.
+     *
+     * @return string
+     */
+    public function toBlockKitBuilderUrl(): string
+    {
+        return 'https://app.slack.com/block-kit-builder#'.rawurlencode(json_encode(Arr::except($this->toArray(), ['username', 'text', 'channel']), true));
+    }
+
+    /**
      * Dump the payload as a URL to the Slack Block Kit Builder.
      *
      * @return void
@@ -332,10 +342,5 @@ class SlackMessage implements Arrayable
         }
 
         dd($this->toBlockKitBuilderUrl());
-    }
-
-    public function toBlockKitBuilderUrl(): string
-    {
-        return 'https://app.slack.com/block-kit-builder#'.rawurlencode(json_encode(Arr::except($this->toArray(), ['username', 'text', 'channel']), true));
     }
 }
